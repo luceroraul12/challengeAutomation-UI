@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { ProductoDto, TipoProducto } from 'src/app/core/interfaces/producto-interface';
+import { ProductoDto, TipoProductoDto } from 'src/app/core/interfaces/producto-interface';
 import { AutomationApiServiceService } from 'src/app/core/services/automation-api-service.service';
 
 @Component({
@@ -11,10 +11,10 @@ import { AutomationApiServiceService } from 'src/app/core/services/automation-ap
 })
 export class ProductoDialogComponent implements OnInit{
 
-  producto?: ProductoDto;
+  producto: ProductoDto = new ProductoDto();
   header: string = "Creacion de producto";
   botonSubmitMensaje?: string;
-  categorias!: TipoProducto[];
+  categorias!: TipoProductoDto[];
 
   formulario: FormGroup = this.initFormulario();
   nombreControl!:  FormControl;
@@ -76,16 +76,15 @@ export class ProductoDialogComponent implements OnInit{
     }
   }
 
-  crearProducto(){
-
-  }
-
-  modificarProducto(){
-
+  crearModificarProducto(){    
+    this.producto!.nombre = this.nombreControl.value
+    this.producto!.precio = this.precioControl.value
+    this.producto!.tipo   = this.tipoControl.value
+    this.dialogRef.close(this.producto);
   }
   
   cancelar(){
-    this.dialogRef.close()
+    this.dialogRef.close();
   }
 }
 

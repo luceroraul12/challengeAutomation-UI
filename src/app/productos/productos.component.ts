@@ -55,8 +55,18 @@ export class ProductosComponent implements OnInit{
   }
 
   openDialogCreate(){
-    this.dialog.open(ProductoDialogComponent, {
-    })
+    let dialogRef = this.dialog.open(ProductoDialogComponent, {
+    });
+    dialogRef.afterClosed().subscribe(
+      (r: ProductoDto) => {
+        debugger
+        this.service.crearProducto(r).subscribe(() => {
+          this.service.getProductos().subscribe(resultFinal => {
+            this.dataSource.data = resultFinal;
+          })
+        })
+      }
+    )
   }
 
   openDialogUpdate(producto: ProductoDto){

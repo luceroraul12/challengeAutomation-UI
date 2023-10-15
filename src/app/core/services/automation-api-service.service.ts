@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { ProductoDto, TipoProducto } from '../interfaces/producto-interface';
+import { ProductoDto, TipoProductoDto } from '../interfaces/producto-interface';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -16,7 +16,11 @@ export class AutomationApiServiceService {
     return this.http.get<ProductoDto[]>(`${this.BASE_API}/producto`);
   }
 
-  getTipoProductos(): Observable<TipoProducto[]>{
-    return this.http.get<TipoProducto[]>(`${this.BASE_API}/tipoProducto`)
+  crearProducto(producto: ProductoDto): Observable<ProductoDto> {
+    return this.http.post<ProductoDto>(`${this.BASE_API}/producto`, producto);
+  }
+
+  getTipoProductos(): Observable<TipoProductoDto[]>{
+    return this.http.get<TipoProductoDto[]>(`${this.BASE_API}/tipoProducto`)
   }
 }
