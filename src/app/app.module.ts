@@ -6,11 +6,15 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MenuComponent } from './core/menu/menu.component';
 import { MaterialModule } from './material/material.module';
+import { ProductosComponent } from './productos/productos.component';
+import { StockProductosComponent } from './stock-productos/stock-productos.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MenuComponent
+    MenuComponent,
+    ProductosComponent,
+    StockProductosComponent
   ],
   imports: [
     BrowserModule,
