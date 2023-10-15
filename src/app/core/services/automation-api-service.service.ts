@@ -17,6 +17,6 @@ export class AutomationApiServiceService {
   }
 
   getTipoProductos(): Observable<TipoProducto[]>{
-    return this.http.get<TipoProducto[]>(`${this.BASE_API}/tipoProductos`)
+    return this.http.get<TipoProducto[]>(`${this.BASE_API}/tipoProducto`)
   }
 }

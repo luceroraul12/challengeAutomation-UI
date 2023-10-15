@@ -2,6 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ProductoDto, TipoProducto } from 'src/app/core/interfaces/producto-interface';
+import { AutomationApiServiceService } from 'src/app/core/services/automation-api-service.service';
 
 @Component({
   selector: 'app-producto-dialog',
@@ -10,14 +11,9 @@ import { ProductoDto, TipoProducto } from 'src/app/core/interfaces/producto-inte
 })
 export class ProductoDialogComponent implements OnInit{
 
-  categorias: TipoProducto[] = [
-    {id: 1, descripcion: "combustible"},
-    {id: 2, descripcion: "Herramientas"},
-    {id: 3, descripcion: "Materia Prima"}
-  ]
-
   producto?: ProductoDto;
   header: string = "Creacion de producto";
+  categorias!: TipoProducto[];
 
   formulario: FormGroup = this.initFormulario();
   nombreControl!:  FormControl;
@@ -27,16 +23,26 @@ export class ProductoDialogComponent implements OnInit{
   constructor(
     private dialogRef: MatDialogRef<ProductoDialogComponent>,
     @Inject(MAT_DIALOG_DATA) private data: any,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private service: AutomationApiServiceService
   ) {}
 
 
   ngOnInit(): void {
-    this.producto = this.data.producto;
+    if(this.data)
+      this.producto = this.data.producto;
+    
     if(this.producto){
       this.header = `Modificacion de producto: ${this.producto.nombre}`;
     }
     this.setProductoForm()
+    this.setTipoProductos()
+  }
+
+  setTipoProductos() {
+    this.service.getTipoProductos().subscribe(r => {
+      this.categorias = r;
+    })
   }
 
   initFormulario(){
