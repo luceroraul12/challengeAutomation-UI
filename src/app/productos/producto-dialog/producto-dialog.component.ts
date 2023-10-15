@@ -13,6 +13,7 @@ export class ProductoDialogComponent implements OnInit{
 
   producto?: ProductoDto;
   header: string = "Creacion de producto";
+  botonSubmitMensaje?: string;
   categorias!: TipoProducto[];
 
   formulario: FormGroup = this.initFormulario();
@@ -29,12 +30,14 @@ export class ProductoDialogComponent implements OnInit{
 
 
   ngOnInit(): void {
-    if(this.data)
+    if(this.data){
       this.producto = this.data.producto;
-    
-    if(this.producto){
-      this.header = `Modificacion de producto: ${this.producto.nombre}`;
+      this.botonSubmitMensaje = "Modificar";
+      this.header = `Modificacion de producto: ${this.producto!.nombre}`;
+    } else {
+      this.botonSubmitMensaje = "Crear";
     }
+
     this.setProductoForm()
     this.setTipoProductos()
   }
