@@ -1,6 +1,8 @@
+import { ProductoDialogComponent } from './producto-dialog/producto-dialog.component';
 import { Component } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { ProductoDto } from '../core/interfaces/producto-interface';
+import { MatDialog } from '@angular/material/dialog';
 
 
 export interface PeriodicElement {
@@ -27,6 +29,8 @@ const ELEMENT_DATA: ProductoDto[] = [
 })
 export class ProductosComponent {
 
+  constructor(private dialog: MatDialog){}
+
   displayedColumns: string[] = [
     'id', 
     'nombre',
@@ -38,5 +42,22 @@ export class ProductosComponent {
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+  openDialogCreate(){
+    this.dialog.open(ProductoDialogComponent, {
+    })
+  }
+
+  openDialogUpdate(producto: ProductoDto){
+    this.dialog.open(ProductoDialogComponent, {
+      data: {
+        producto
+      }
+    })
+  }
+
+  delete(){
+
   }
 }
