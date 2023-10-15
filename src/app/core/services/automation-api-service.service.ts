@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 import { ProductoDto, TipoProductoDto } from '../interfaces/producto-interface';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +10,8 @@ export class AutomationApiServiceService {
   
 
   private BASE_API: string = "http://localhost:8080/automation"
+
+  changeTab$: Subject<boolean> = new Subject();
 
   constructor(private http: HttpClient) { }
 
