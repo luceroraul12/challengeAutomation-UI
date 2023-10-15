@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ProductoDto } from 'src/app/core/interfaces/producto-interface';
 
@@ -12,7 +12,11 @@ export class ProductoDialogComponent implements OnInit{
 
   producto?: ProductoDto;
   header: string = "Creacion de producto";
+
   formulario: FormGroup = this.initFormulario();
+  nombreControl?:  FormControl;
+  precioControl?:  FormControl;
+  tipoControl?:    FormControl;
 
   constructor(
     private dialogRef: MatDialogRef<ProductoDialogComponent>,
@@ -30,10 +34,22 @@ export class ProductoDialogComponent implements OnInit{
   }
 
   initFormulario(){
+    this.nombreControl = new FormControl(
+      '', [
+      Validators.required, Validators.minLength(3), Validators.maxLength(100)
+    ]
+    );
+    this.precioControl = new FormControl(
+      '', [
+      Validators.required, Validators.min(0), Validators.max(999999)
+    ]
+    );
+    this.tipoControl = new FormControl('', Validators.required);
+    
     return this.formBuilder.group({
-      nombre: ['', Validators.required],
-      precio: ['', Validators.required],
-      tipo:   ['', Validators.required],
+      nombre: this.nombreControl,
+      precio: this.precioControl,
+      tipo:   this.tipoControl
     })
   }
 

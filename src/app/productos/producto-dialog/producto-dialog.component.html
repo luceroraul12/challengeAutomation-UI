@@ -6,15 +6,16 @@
                 <mat-label>Nombre</mat-label>
                 <input matInput placeholder="Nombre del producto..." id="nombre" formControlName="nombre" type="text">
                 <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-                <mat-hint>Hint</mat-hint>
+                <mat-error *ngIf="nombreControl?.invalid">El nombre ingresado no es valido</mat-error>
             </mat-form-field>
         </p>
         <p>
             <mat-form-field appearance="fill">
                 <mat-label>Categoria</mat-label>
-                <input matInput placeholder="Placeholder">
+                <input matInput>
                 <mat-icon matSuffix>create</mat-icon>
                 <mat-hint>Hint</mat-hint>
+                <mat-error *ngIf="tipoControl?.invalid">Debe seleccionar una categoria</mat-error>
             </mat-form-field>
         </p>
         <p>
@@ -22,7 +23,7 @@
                 <mat-label>Precio</mat-label>
                 <input matInput placeholder="Precio del producto..." id="precio" formControlName="precio">
                 <mat-icon matSuffix>money</mat-icon>
-                <mat-hint>Hint</mat-hint>
+                <mat-error *ngIf="precioControl?.invalid">El precio ingresado no es valido</mat-error>
             </mat-form-field>
         </p>
 
