@@ -59,7 +59,6 @@ export class ProductosComponent implements OnInit{
     });
     dialogRef.afterClosed().subscribe(
       (r: ProductoDto) => {
-        debugger
         this.service.crearProducto(r).subscribe(() => {
           this.service.getProductos().subscribe(resultFinal => {
             this.dataSource.data = resultFinal;
@@ -77,7 +76,11 @@ export class ProductosComponent implements OnInit{
     })
   }
 
-  delete(){
-    
+  delete(producto: ProductoDto){
+    this.service.eliminarProducto(producto).subscribe(() => {
+      this.service.getProductos().subscribe(r => {
+        this.dataSource.data = r
+      })
+    })
   }
 }

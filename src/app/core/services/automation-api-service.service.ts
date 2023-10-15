@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class AutomationApiServiceService {
+  
 
   private BASE_API: string = "http://localhost:8080/automation"
 
@@ -22,5 +23,9 @@ export class AutomationApiServiceService {
 
   getTipoProductos(): Observable<TipoProductoDto[]>{
     return this.http.get<TipoProductoDto[]>(`${this.BASE_API}/tipoProducto`)
+  }
+
+  eliminarProducto(producto: ProductoDto): Observable<number> {
+    return this.http.delete<number>(`${this.BASE_API}/producto/${producto.id}`)
   }
 }

@@ -1,5 +1,5 @@
 export class ProductoDto {
-    id: number = 0;
+    id?: number;
     nombre: string = "";
     tipo: TipoProductoDto = new TipoProductoDto();
     precio: number = 0.0;
