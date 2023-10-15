@@ -10,6 +10,7 @@ import { ProductoDto } from 'src/app/core/interfaces/producto-interface';
 export class ProductoDialogComponent implements OnInit{
 
   producto?: ProductoDto;
+  header: string = "Creacion de producto";
 
   constructor(
     public dialogRef: MatDialogRef<ProductoDialogComponent>,
@@ -18,7 +19,10 @@ export class ProductoDialogComponent implements OnInit{
 
 
   ngOnInit(): void {
-    this.producto = this.data.producto
+    this.producto = this.data.producto;
+    if(this.producto){
+      this.header = `Modificacion de producto: ${this.producto.nombre}`;
+    }
   }
 
   
