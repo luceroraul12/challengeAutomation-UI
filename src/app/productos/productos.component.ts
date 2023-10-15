@@ -11,12 +11,12 @@ export interface PeriodicElement {
 }
 
 const ELEMENT_DATA: ProductoDto[] = [
-  {id: 1,   nombre: 'Nafta comun',  precio: 1.0079, },
-  {id: 2,   nombre: 'Nafta super',  precio: 4.0026, },
-  {id: 3,   nombre: 'Taladro',      precio: 6.941,  },
-  {id: 4,   nombre: 'Torno',        precio: 9.0122, },
-  {id: 5,   nombre: 'Madera',       precio: 10.811, },
-  {id: 6,   nombre: 'Pegamento',    precio: 12.0107,},
+  {id: 1,   nombre: 'Nafta comun',  precio: 1.0079, tipo: {id: 1, descripcion: "combustible"}},
+  {id: 2,   nombre: 'Nafta super',  precio: 4.0026, tipo: {id: 1, descripcion: "combustible"}},
+  {id: 3,   nombre: 'Taladro',      precio: 6.941,  tipo: {id: 2, descripcion: "Herramientas"}},
+  {id: 4,   nombre: 'Torno',        precio: 9.0122, tipo: {id: 2, descripcion: "Herramientas"}},
+  {id: 5,   nombre: 'Madera',       precio: 10.811, tipo: {id: 3, descripcion: "Materia Prima"}},
+  {id: 6,   nombre: 'Pegamento',    precio: 12.0107,tipo: {id: 3, descripcion: "Materia Prima"}},
 ];
 
 
@@ -30,6 +30,7 @@ export class ProductosComponent {
   displayedColumns: string[] = [
     'id', 
     'nombre',
+    'categoria',
     'precio',
     'acciones'];
   dataSource = new MatTableDataSource(ELEMENT_DATA);

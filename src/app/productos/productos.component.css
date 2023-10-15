@@ -8,6 +8,15 @@ table {
   width: 100%;
 }
 
+.header{
+  display: flex;
+  align-items: center;
+}
+
+.header-item{
+  margin: 5px;
+}
+
 .mat-column-id {
   width: 32px;
   border-right: 1px solid currentColor;
@@ -16,6 +25,11 @@ table {
 }
 
 .mat-column-nombre {
+  padding-right: 24px;
+  text-align: center;
+}
+
+.mat-column-categoria {
   padding-right: 24px;
   text-align: center;
 }
@@ -35,3 +49,4 @@ table {
   margin-top: 5px;
   margin-bottom: 5px;
 }
+
