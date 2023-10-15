@@ -10,11 +10,16 @@
             </mat-form-field>
         </p>
         <p>
+           
             <mat-form-field appearance="fill">
                 <mat-label>Categoria</mat-label>
-                <input matInput>
+                <mat-select [formControl]="tipoControl" name="tipo">
+                  <mat-option>None</mat-option>
+                  <mat-option *ngFor="let categoria of categorias" [value]="categoria.id">
+                    {{categoria.descripcion | titlecase}}
+                  </mat-option>
+                </mat-select>
                 <mat-icon matSuffix>create</mat-icon>
-                <mat-hint>Hint</mat-hint>
                 <mat-error *ngIf="tipoControl?.invalid">Debe seleccionar una categoria</mat-error>
             </mat-form-field>
         </p>

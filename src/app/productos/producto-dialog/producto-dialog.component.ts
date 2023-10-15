@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { ProductoDto } from 'src/app/core/interfaces/producto-interface';
+import { ProductoDto, TipoProducto } from 'src/app/core/interfaces/producto-interface';
 
 @Component({
   selector: 'app-producto-dialog',
@@ -10,13 +10,19 @@ import { ProductoDto } from 'src/app/core/interfaces/producto-interface';
 })
 export class ProductoDialogComponent implements OnInit{
 
+  categorias: TipoProducto[] = [
+    {id: 1, descripcion: "combustible"},
+    {id: 2, descripcion: "Herramientas"},
+    {id: 3, descripcion: "Materia Prima"}
+  ]
+
   producto?: ProductoDto;
   header: string = "Creacion de producto";
 
   formulario: FormGroup = this.initFormulario();
-  nombreControl?:  FormControl;
-  precioControl?:  FormControl;
-  tipoControl?:    FormControl;
+  nombreControl!:  FormControl;
+  precioControl!:  FormControl;
+  tipoControl!:    FormControl;
 
   constructor(
     private dialogRef: MatDialogRef<ProductoDialogComponent>,
@@ -41,11 +47,11 @@ export class ProductoDialogComponent implements OnInit{
     );
     this.precioControl = new FormControl(
       '', [
-      Validators.required, Validators.min(0), Validators.max(999999)
+      Validators.required, Validators.min(0), Validators.max(999999),  Validators.pattern("^[0-9.]*$")
     ]
     );
     this.tipoControl = new FormControl('', Validators.required);
-    
+
     return this.formBuilder.group({
       nombre: this.nombreControl,
       precio: this.precioControl,
@@ -55,8 +61,9 @@ export class ProductoDialogComponent implements OnInit{
 
   setProductoForm() {
     if(this.producto){
-      this.formulario.get('nombre')?.setValue(this.producto.nombre);
-      this.formulario.get('precio')?.setValue(this.producto.precio);
+      this.nombreControl.setValue(this.producto.nombre);
+      this.precioControl.setValue(this.producto.precio);
+      this.tipoControl.setValue(this.producto.tipo.id);
     }
   }
 
