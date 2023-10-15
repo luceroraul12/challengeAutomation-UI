@@ -8,13 +8,15 @@ import { MenuComponent } from './core/menu/menu.component';
 import { MaterialModule } from './material/material.module';
 import { ProductosComponent } from './productos/productos.component';
 import { StockProductosComponent } from './stock-productos/stock-productos.component';
+import { ProductoDialogComponent } from './productos/producto-dialog/producto-dialog.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MenuComponent,
     ProductosComponent,
-    StockProductosComponent
+    StockProductosComponent,
+    ProductoDialogComponent
   ],
   imports: [
     BrowserModule,
