@@ -1,11 +1,11 @@
-export interface ProductoDto {
-    id: number;
-    nombre: string;
-    tipo: TipoProducto;
-    precio: number;
+export class ProductoDto {
+    id: number = 0;
+    nombre: string = "";
+    tipo: TipoProductoDto = new TipoProductoDto();
+    precio: number = 0.0;
 }
 
-export interface TipoProducto {
-    id: number;
-    descripcion: string;
+export class TipoProductoDto {
+    id: number = 0;
+    descripcion: string = "";
 }
