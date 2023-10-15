@@ -1,9 +1,37 @@
 /* Structure */
 table {
     width: 100%;
-  }
+}
   
-  .mat-mdc-form-field {
-    font-size: 14px;
-    width: 100%;
-  }
+.mat-mdc-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+.mat-column-id {
+  width: 32px;
+  border-right: 1px solid currentColor;
+  padding-right: 24px;
+  text-align: center;
+}
+
+.mat-column-nombre {
+  padding-right: 24px;
+  text-align: center;
+}
+
+.mat-column-precio {
+  padding-right: 24px;
+  text-align: center;
+}
+
+.mat-column-acciones {
+  padding-right: 24px;
+  text-align: center;
+}
+
+.mbutton {
+  margin-left: 10px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
