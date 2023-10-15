@@ -1,35 +1,36 @@
 <div class="dialog">
     <h1>{{header}}</h1>
     <form [formGroup]="formulario" (submit)="crearProducto()">
-        
-    </form>
-    <p>
-        <mat-form-field appearance="fill" >
-            <mat-label>Nombre</mat-label>
-            <input matInput placeholder="Nombre del producto...">
-            <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-            <mat-hint>Hint</mat-hint>
-        </mat-form-field>
-    </p>
-    <p>
-        <mat-form-field appearance="fill">
-            <mat-label>Categoria</mat-label>
-            <input matInput placeholder="Placeholder">
-            <mat-icon matSuffix>create</mat-icon>
-            <mat-hint>Hint</mat-hint>
-        </mat-form-field>
-    </p>
-    <p>
-        <mat-form-field appearance="fill">
-            <mat-label>Precio</mat-label>
-            <input matInput placeholder="Precio del producto...">
-            <mat-icon matSuffix>money</mat-icon>
-            <mat-hint>Hint</mat-hint>
-        </mat-form-field>
-    </p>
+        <p>
+            <mat-form-field appearance="fill">
+                <mat-label>Nombre</mat-label>
+                <input matInput placeholder="Nombre del producto..." id="nombre" formControlName="nombre" type="text">
+                <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                <mat-hint>Hint</mat-hint>
+            </mat-form-field>
+        </p>
+        <p>
+            <mat-form-field appearance="fill">
+                <mat-label>Categoria</mat-label>
+                <input matInput placeholder="Placeholder">
+                <mat-icon matSuffix>create</mat-icon>
+                <mat-hint>Hint</mat-hint>
+            </mat-form-field>
+        </p>
+        <p>
+            <mat-form-field appearance="fill">
+                <mat-label>Precio</mat-label>
+                <input matInput placeholder="Precio del producto..." id="precio" formControlName="precio">
+                <mat-icon matSuffix>money</mat-icon>
+                <mat-hint>Hint</mat-hint>
+            </mat-form-field>
+        </p>
 
-    <div class="dialog-buttons">
-        <button mat-raised-button color="primary" class="header-item" class="button">Crear o Modificar</button>
-        <button mat-raised-button color="primary" class="header-item" class="button">Cancelar</button>
-    </div>
+        <div class="dialog-buttons">
+            <button mat-raised-button color="primary" class="header-item" class="button" type="submit"
+                [disabled]="formulario.invalid">Crear o Modificar</button>
+            <button mat-raised-button color="primary" class="header-item" class="button"
+                (click)="cancelar()">Cancelar</button>
+        </div>
+    </form>
 </div>

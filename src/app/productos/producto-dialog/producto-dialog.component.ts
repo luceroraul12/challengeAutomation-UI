@@ -12,7 +12,7 @@ export class ProductoDialogComponent implements OnInit{
 
   producto?: ProductoDto;
   header: string = "Creacion de producto";
-  formulario!: FormGroup;
+  formulario: FormGroup = this.initFormulario();
 
   constructor(
     private dialogRef: MatDialogRef<ProductoDialogComponent>,
@@ -26,23 +26,35 @@ export class ProductoDialogComponent implements OnInit{
     if(this.producto){
       this.header = `Modificacion de producto: ${this.producto.nombre}`;
     }
-    this.formulario = this.formBuilder.group({
+    this.setProductoForm()
+  }
+
+  initFormulario(){
+    return this.formBuilder.group({
       nombre: ['', Validators.required],
       precio: ['', Validators.required],
       tipo:   ['', Validators.required],
     })
   }
 
+  setProductoForm() {
+    if(this.producto){
+      this.formulario.get('nombre')?.setValue(this.producto.nombre);
+      this.formulario.get('precio')?.setValue(this.producto.precio);
+    }
+  }
 
   crearProducto(){
 
   }
 
   modificarProducto(){
-    
+
   }
   
-
-
-
+  cancelar(){
+    this.dialogRef.close()
+  }
 }
+
+
