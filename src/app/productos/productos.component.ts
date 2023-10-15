@@ -30,7 +30,8 @@ export class ProductosComponent {
   displayedColumns: string[] = [
     'id', 
     'nombre',
-    'precio',];
+    'precio',
+    'acciones'];
   dataSource = new MatTableDataSource(ELEMENT_DATA);
 
   applyFilter(event: Event) {
