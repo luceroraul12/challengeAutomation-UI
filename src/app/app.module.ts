@@ -9,6 +9,7 @@ import { MaterialModule } from './material/material.module';
 import { ProductosComponent } from './productos/productos.component';
 import { StockProductosComponent } from './stock-productos/stock-productos.component';
 import { ProductoDialogComponent } from './productos/producto-dialog/producto-dialog.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { ProductoDialogComponent } from './productos/producto-dialog/producto-di
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     MaterialModule
   ],
   providers: [],

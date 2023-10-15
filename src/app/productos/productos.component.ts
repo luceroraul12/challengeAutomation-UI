@@ -1,8 +1,9 @@
 import { ProductoDialogComponent } from './producto-dialog/producto-dialog.component';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { ProductoDto } from '../core/interfaces/producto-interface';
 import { MatDialog } from '@angular/material/dialog';
+import { AutomationApiServiceService } from '../core/services/automation-api-service.service';
 
 
 export interface PeriodicElement {
@@ -27,9 +28,11 @@ const ELEMENT_DATA: ProductoDto[] = [
   templateUrl: './productos.component.html',
   styleUrls: ['./productos.component.css']
 })
-export class ProductosComponent {
+export class ProductosComponent implements OnInit{
 
-  constructor(private dialog: MatDialog){}
+  constructor(private dialog: MatDialog,
+    private service: AutomationApiServiceService){}
+  
 
   displayedColumns: string[] = [
     'id', 
@@ -37,7 +40,14 @@ export class ProductosComponent {
     'categoria',
     'precio',
     'acciones'];
-  dataSource = new MatTableDataSource(ELEMENT_DATA);
+
+  dataSource!: MatTableDataSource<ProductoDto>;
+
+  ngOnInit(): void {
+    this.service.getProductos().subscribe(r => {
+      this.dataSource = new MatTableDataSource(r);
+    })
+  }
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
