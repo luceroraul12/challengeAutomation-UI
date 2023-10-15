@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {MatTabsModule} from '@angular/material/tabs'; 
-
+import {MatTableModule} from '@angular/material/table'; 
+import {MatFormFieldModule} from '@angular/material/form-field'; 
 
 
 @NgModule({
@@ -10,7 +11,9 @@ import {MatTabsModule} from '@angular/material/tabs';
     CommonModule,
   ],
   exports: [
-    MatTabsModule
+    MatTabsModule,
+    MatTableModule,
+    MatFormFieldModule
   ]
 })
 export class MaterialModule { }
