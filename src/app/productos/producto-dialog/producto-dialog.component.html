@@ -1,7 +1,10 @@
 <div class="dialog">
     <h1>{{header}}</h1>
+    <form [formGroup]="formulario" (submit)="crearProducto()">
+        
+    </form>
     <p>
-        <mat-form-field appearance="fill">
+        <mat-form-field appearance="fill" >
             <mat-label>Nombre</mat-label>
             <input matInput placeholder="Nombre del producto...">
             <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>

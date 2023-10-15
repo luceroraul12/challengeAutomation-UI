@@ -1,4 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ProductoDto } from 'src/app/core/interfaces/producto-interface';
 
@@ -11,10 +12,12 @@ export class ProductoDialogComponent implements OnInit{
 
   producto?: ProductoDto;
   header: string = "Creacion de producto";
+  formulario!: FormGroup;
 
   constructor(
-    public dialogRef: MatDialogRef<ProductoDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any,
+    private dialogRef: MatDialogRef<ProductoDialogComponent>,
+    @Inject(MAT_DIALOG_DATA) private data: any,
+    private formBuilder: FormBuilder
   ) {}
 
 
@@ -23,8 +26,21 @@ export class ProductoDialogComponent implements OnInit{
     if(this.producto){
       this.header = `Modificacion de producto: ${this.producto.nombre}`;
     }
+    this.formulario = this.formBuilder.group({
+      nombre: ['', Validators.required],
+      precio: ['', Validators.required],
+      tipo:   ['', Validators.required],
+    })
   }
 
+
+  crearProducto(){
+
+  }
+
+  modificarProducto(){
+    
+  }
   
 
 
