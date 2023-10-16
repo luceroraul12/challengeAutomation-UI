@@ -27,6 +27,10 @@ export class AutomationApiServiceService {
     return this.http.put<ProductoDto>(`${this.BASE_API}/producto`, producto);
   }
 
+  actualizarStock(stock: ProductoStockDto): Observable<ProductoStockDto>{
+    return this.http.put<ProductoStockDto>(`${this.BASE_API}/stock`, stock);
+  }
+
   getTipoProductos(): Observable<TipoProductoDto[]>{
     return this.http.get<TipoProductoDto[]>(`${this.BASE_API}/tipoProducto`)
   }

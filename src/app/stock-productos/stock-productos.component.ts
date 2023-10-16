@@ -10,6 +10,7 @@ import { MatTableDataSource } from '@angular/material/table';
 })
 export class StockProductosComponent implements OnInit{
 
+
   stock: ProductoStockDto[] = [];
 
   displayedColumns: string[] = [
@@ -38,6 +39,10 @@ export class StockProductosComponent implements OnInit{
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+  actualizarStock(productoStock: ProductoStockDto) {
+    this.service.actualizarStock(productoStock).subscribe()
   }
 
 }

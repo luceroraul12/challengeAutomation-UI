@@ -10,6 +10,7 @@ import { ProductosComponent } from './productos/productos.component';
 import { StockProductosComponent } from './stock-productos/stock-productos.component';
 import { ProductoDialogComponent } from './productos/producto-dialog/producto-dialog.component';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    FormsModule,
     MaterialModule
   ],
   providers: [],

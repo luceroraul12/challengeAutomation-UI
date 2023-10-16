@@ -27,7 +27,8 @@
         <!-- <td mat-cell *matCellDef="let element"> {{element.cantidad}} </td> -->
         <td mat-cell *matCellDef="let element">
             <mat-form-field>
-                <input type="number" matInput placeholder="Ingresar cantidad ..." [value]="element.cantidad">
+                <input type="number" matInput placeholder="Ingresar cantidad ..." [(ngModel)]="element.cantidad"
+                    (keyup.enter)="actualizarStock(element)">
             </mat-form-field>
         </td>
     </ng-container>
