@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { EventEmitter, Injectable } from '@angular/core';
 import { ProductoDto, TipoProductoDto } from '../interfaces/producto-interface';
 import { Observable, Subject } from 'rxjs';
+import { ProductoStockDto } from '../interfaces/producto-stock-interface';
 
 @Injectable({
   providedIn: 'root'
@@ -29,5 +30,9 @@ export class AutomationApiServiceService {
 
   eliminarProducto(producto: ProductoDto): Observable<number> {
     return this.http.delete<number>(`${this.BASE_API}/producto/${producto.id}`)
+  }
+
+  getProductoStock(): Observable<ProductoStockDto[]> {
+    return this.http.get<ProductoStockDto[]>(`${this.BASE_API}/stock`)
   }
 }
