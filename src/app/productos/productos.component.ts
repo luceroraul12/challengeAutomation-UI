@@ -44,6 +44,8 @@ export class ProductosComponent implements OnInit{
         this.service.crearProducto(r).subscribe(() => {
           this.service.getProductos().subscribe(resultFinal => {
             this.dataSource.data = resultFinal;
+            // Debo indicar un cambio para la vista de stock
+            this.service.changeTab$.next(true);
           })
         })
       }
@@ -61,6 +63,8 @@ export class ProductosComponent implements OnInit{
         this.service.actualizarProducto(r).subscribe(() => {
           this.service.getProductos().subscribe(resultFinal => {
             this.dataSource.data = resultFinal;
+            // Debo indicar un cambio para la vista de stock
+            this.service.changeTab$.next(true);
           })
         })
       }
