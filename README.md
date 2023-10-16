@@ -1,27 +1,27 @@
 # ChallengeAutomation
+## Frontend
+Fue realizado con Angular 14 y componetizacion Material
+### Vista de Productos
+Muestra una lista de los productos que se encuentran persistidos en la base de datos y tiene las siguientes funcionalidades:
+- Mostrar el listado de productos
+- Crear un nuevo producto
+- Modificar un producto 
+- Eliminar un producto
+- Filtrar productos de la tabla
+#### Imagenes
+##### Lista de productos
+![image](https://github.com/luceroraul12/challengeAutomation-UI/assets/106817372/e2b48db8-f666-4a21-bdfd-be65bc85d88c)
+##### Modal de crear productos
+![image](https://github.com/luceroraul12/challengeAutomation-UI/assets/106817372/dc170449-47f2-4822-b7a7-93f75b56755a)
+##### Modal de modificación de producto
+![image](https://github.com/luceroraul12/challengeAutomation-UI/assets/106817372/d84730f7-d1a9-4909-bd2b-f04816f51c74)
+### Vista de Stock de Productos
+Muestra la lista de stock de productos que fueron mostrado en la tabla anterior y tiene las siguientes funcionalidades:
+- Filtrar stock de productos de la tabla
+- Mostrar el listado de stock
+- Permite actualizar y persistir las cantidades de stocks
+- Cuando se modifica, crea o elimina un producto desde la vista de producto, de manera reactiva se vuelve a pedir el listado de stock al backend para que los datos mostrados sean consistentes
+#### Imagenes
+##### Lista de stock de productos
+![image](https://github.com/luceroraul12/challengeAutomation-UI/assets/106817372/7a40d6f1-86bb-4fb5-9b00-839cc2c16561)
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.0.5.
-
-## Development server
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
