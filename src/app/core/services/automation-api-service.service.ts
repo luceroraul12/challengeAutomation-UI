@@ -8,7 +8,6 @@ import { ProductoStockDto } from '../interfaces/producto-stock-interface';
   providedIn: 'root'
 })
 export class AutomationApiServiceService {
-  
 
   private BASE_API: string = "http://localhost:8080/automation"
 
@@ -22,6 +21,10 @@ export class AutomationApiServiceService {
 
   crearProducto(producto: ProductoDto): Observable<ProductoDto> {
     return this.http.post<ProductoDto>(`${this.BASE_API}/producto`, producto);
+  }
+
+  actualizarProducto(producto: ProductoDto): Observable<ProductoDto> {
+    return this.http.put<ProductoDto>(`${this.BASE_API}/producto`, producto);
   }
 
   getTipoProductos(): Observable<TipoProductoDto[]>{

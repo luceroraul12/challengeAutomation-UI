@@ -14,7 +14,7 @@ export class ProductoDialogComponent implements OnInit{
   producto: ProductoDto = new ProductoDto();
   header: string = "Creacion de producto";
   botonSubmitMensaje?: string;
-  categorias!: TipoProductoDto[];
+  categorias: TipoProductoDto[] = [];
 
   formulario: FormGroup = this.initFormulario();
   nombreControl!:  FormControl;
@@ -38,13 +38,14 @@ export class ProductoDialogComponent implements OnInit{
       this.botonSubmitMensaje = "Crear";
     }
 
-    this.setProductoForm()
     this.setTipoProductos()
   }
 
   setTipoProductos() {
     this.service.getTipoProductos().subscribe(r => {
       this.categorias = r;
+      // Luego de tener el listado de categorias voy a querer setear un producto para modificar si se da el caso
+      this.setProductoForm();
     })
   }
 
@@ -79,9 +80,16 @@ export class ProductoDialogComponent implements OnInit{
   crearModificarProducto(){    
     this.producto!.nombre = this.nombreControl.value
     this.producto!.precio = this.precioControl.value
-    this.producto!.tipo   = this.tipoControl.value
+    // Para el tipo de producto tengo que filtrar de la lista que existe
+    this.producto!.tipo   = this.findCategoria(this.tipoControl.value)
     this.dialogRef.close(this.producto);
   }
+
+  findCategoria(idCategoria: number): TipoProductoDto{
+    let categoria: TipoProductoDto = this.categorias.find(c => c.id == idCategoria)!;
+    return categoria;
+  }
+
   
   cancelar(){
     this.dialogRef.close();
