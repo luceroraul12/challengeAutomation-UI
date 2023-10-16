@@ -1,0 +1,31 @@
+/* Structure */
+table {
+    width: 100%;
+}
+  
+.mat-mdc-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+.mat-column-id {
+    width: 32px;
+    border-right: 1px solid currentColor;
+    padding-right: 24px;
+    text-align: center;
+}
+
+.mat-column-nombre {
+    padding-right: 24px;
+    text-align: center;
+}
+
+.mat-column-categoria {
+    padding-right: 24px;
+    text-align: center;
+}
+
+.mat-column-cantidad {
+    padding-right: 24px;
+    text-align: center;
+}
